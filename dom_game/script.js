@@ -7,6 +7,14 @@ let name = prompt('Enter your name');
 let clickAudio = new Audio('./assets/click.wav')
 let clickAudio1 = new Audio('./assets/lose.wav')
 
+//if the value of leaderBoard exists, then do nothing, if not initialise with [] array
+if( !localStorage.getItem('leaderBoard')){
+    localStorage.setItem("leaderBoard", JSON.stringify([]));
+}
+
+//get the value parsing
+let leaderBoard = JSON.parse(localStorage.getItem("leaderBoard"));
+
 document.querySelector('#name').innerText = name;
 let levelNumber;
 
@@ -32,7 +40,7 @@ function main(level){
 
         for(let i=1; i<=levelNumber; i++){ //10 columns td
             let td = document.createElement('td');
-            td.innerText = arr[counter];
+            // td.innerText = arr[counter];
             td.setAttribute('id', arr[counter]);
             counter++;
             td.addEventListener('click', onClickHandler);
@@ -76,7 +84,9 @@ function onClickHandler(e){
     //handle 1
     if(clickedNum == 1){
         alert("You have won!!")
-        window.location.reload();
+        let newWinner = winnerScore();
+        doRanking(newWinner);
+        location.href = "leaderBoard.html"
     }
 }
 
@@ -87,4 +97,40 @@ function isPrime(num){
         if(num % i == 0) return false;
     }
     return true;
+}
+
+function winnerScore(){
+    let fname = document.getElementById("name").innerText;
+    let attempts = document.getElementById("score").innerText;
+
+    return {fname, attempts: Number(attempts)}
+}
+
+
+function doRanking(newWinner){
+
+    const indexFound = leaderBoard.findIndex(ele => ele.attempts == newWinner.attempts);
+    console.log(indexFound);
+
+    if(indexFound == -1){
+        let tempObj = {
+            players: [newWinner.fname],
+            attempts:newWinner.attempts
+        }
+
+        leaderBoard.push(tempObj);
+        console.log(leaderBoard);
+    }
+    else {
+        leaderBoard[indexFound].players.push(newWinner.fname);
+        console.log(leaderBoard);
+    }
+
+    leaderBoard.sort((a, b) => a.attempts - b.attempts);
+
+    //save to localStorage
+    localStorage.setItem("leaderBoard", JSON.stringify(leaderBoard));
+    console.log(leaderBoard);
+
+
 }
