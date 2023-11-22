@@ -26,18 +26,44 @@
                     <th>Players</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
+            <tbody id="myTable">
+                <!-- <tr>
                     <td></td>
                     <td></td>
                     <td></td>
-                </tr>
+                </tr> -->
             </tbody>
         </table>
     </center>
 </body>
 <script>
-    let leaderBoard = JSON.parse(localStorage.getItem('leaderBoard'));
-    console.log(leaderBoard);
+    // let leaderBoard = JSON.parse(localStorage.getItem('leaderBoard'));
+    // console.log(leaderBoard);
+async function main(){
+    try {
+        let leaderBoard = JSON.parse(localStorage.getItem('leaderBoard'));
+        createTable(leaderBoard.data)
+        console.log(leaderBoard)
+    } catch (error) {
+        console.log(error)
+    }
+}
+main();
+
+function createTable(data){
+    let myTable=document.querySelector('#myTable');
+    data.forEach(ele => {
+    let tr = document.createElement('tr')
+    //create td1,td2, td3, td4
+    let td1 = document.createElement('td')
+    td1.innerText = ele.attempts
+    let td2 = document.createElement('td')
+    td2.innerText = ele.attempts
+    let td3 = document.createElement('td')
+    td3.innerText = ele.players
+    tr.append(td1, td2, td3)
+    myTable.appendChild(tr)
+    });
+}
 </script>
 </html>
