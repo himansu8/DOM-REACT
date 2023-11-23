@@ -52,15 +52,35 @@ function createTable(data){
 }
 //createTable()
 
+// let btn0 = document.querySelector('#btn0');
+// let flag = false;
+// btn0.addEventListener('click', ()=>{
+//     //removing children of body
+//     let tbody = document.querySelector('#myTable')
+//     tbody.replaceChildren();
+//     //filtering out the true values
+//     let filterData = data.filter(ele => ele.completed == flag)
+//     flag = !flag
+//     //rendering the html with dom
+//     createTable(filterData);
+// })
 let btn = document.querySelector('#btn');
-let flag = false;
 btn.addEventListener('click', ()=>{
     //removing children of body
     let tbody = document.querySelector('#myTable')
     tbody.replaceChildren();
     //filtering out the true values
-    let filterData = data.filter(ele => ele.completed == flag)
-    flag = !flag
+    let filterData = data.filter(ele => ele.completed)
     //rendering the html with dom
     createTable(filterData);
+})
+let btn1 = document.querySelector('#btn1');
+btn1.addEventListener('click', ()=>{
+    //removing children of body
+    let tbody = document.querySelector('#myTable')
+    tbody.replaceChildren();
+    //filtering out the true values
+    let filterData1 = data.filter(ele => !ele.completed)
+    //rendering the html with dom
+    createTable(filterData1);
 })
