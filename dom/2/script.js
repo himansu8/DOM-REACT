@@ -1,10 +1,12 @@
 
 const url = 'https://jsonplaceholder.typicode.com/todos'
+let data;
 async function main(){
     try {
         let response = await axios.get(url)
+        data = response.data
         // console.log(response.data)
-        createTable(response.data)
+        createTable(data)
     } catch (error) {
         console.log(error)
     }
@@ -49,3 +51,16 @@ function createTable(data){
     });
 }
 //createTable()
+
+let btn = document.querySelector('#btn');
+let flag = false;
+btn.addEventListener('click', ()=>{
+    //removing children of body
+    let tbody = document.querySelector('#myTable')
+    tbody.replaceChildren();
+    //filtering out the true values
+    let filterData = data.filter(ele => ele.completed == flag)
+    flag = !flag
+    //rendering the html with dom
+    createTable(filterData);
+})
