@@ -7,10 +7,10 @@ import EffectAPI from './Components/EffectAPI';
 function App() {
   return (
   <>
-  {/* <CounterVar />
-  <CounterState /> */}
+  <CounterVar />
+  <CounterState />
   {/* <Effect /> */}
-  <EffectAPI />
+  {/* <EffectAPI /> */}
   </>
   );
 }
