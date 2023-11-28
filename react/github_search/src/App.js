@@ -1,5 +1,5 @@
 import './App.css';
-import Github from './Components/Github';
+import Home from './Components/Home';
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
@@ -9,9 +9,9 @@ import { Route, Routes } from "react-router-dom";
 function App() {
   const [users, setUsers] = useState([]);
   useEffect(() => {
-    //fetchUsersData();
+    fetchUsersData();
   }, [])
-  function fetchUsersData(){
+  function fetchUsersData() {
     const url = "https://api.github.com/users";
     axios.get(url)
       .then((response) => {
@@ -26,7 +26,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<h1>home</h1>} />
+        <Route path="/" element={<Home users={users} />} />
         <Route path="/javascript" element={<h1>javascript</h1>} />
       </Routes>
 
