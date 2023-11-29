@@ -1,21 +1,19 @@
 
+import Search from "./Search";
+import Users from "./Users";
 
-function Home(props){
 
-    return(
+function Home(props) {
+
+    return (
         <>
-        <center>
-        {props.users.map(ele=>{
-            return(
-                <>
-                <p>{ele.login}</p>
-                <a href={ele.html_url} target="_blank">Profile</a>
-                <hr />
-                </>
-            )
-        })}
-        </center>
+
+            <Search searchUsers={props.searchUsers} />
+            <hr />
+            <Users users={props.users} />
+
+
         </>
     )
 }
-export default Home;
+export default Home;  

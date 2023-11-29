@@ -23,10 +23,18 @@ function App() {
         console.log(err);
       })
   }
+  function searchUsers(username) {
+    const url = `https://api.github.com/search/users?q=${username}`
+    axios.get(url)
+      .then((response) => {
+        console.log(response.data)
+      })
+      .catch((error) => { console.log(error) })
+  }
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home users={users} />} />
+        <Route path="/" element={<Home users={users} searchUsers={searchUsers} />} />
         <Route path="/javascript" element={<h1>javascript</h1>} />
       </Routes>
 
