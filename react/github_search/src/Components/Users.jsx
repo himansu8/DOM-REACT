@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Users(props) {
 
     return (
@@ -8,6 +10,7 @@ function Users(props) {
                         <>
                             <p>{ele.login}</p>
                             <a href={ele.html_url} target="_blank">Profile</a>
+                            <Link to={`/user/${ele.login}`}>Profile</Link>
                             <hr />
                         </>
                     )
@@ -17,4 +20,4 @@ function Users(props) {
 
     )
 }
-export default Users;
+export default Users; 

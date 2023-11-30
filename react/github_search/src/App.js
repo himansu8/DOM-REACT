@@ -1,5 +1,6 @@
 import './App.css';
 import Home from './Components/Home';
+import User from './Components/User';
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
@@ -27,15 +28,19 @@ function App() {
     const url = `https://api.github.com/search/users?q=${username}`
     axios.get(url)
       .then((response) => {
-        console.log(response.data)
+        //console.log(response.data)
+        setUsers(response.data.items);
       })
       .catch((error) => { console.log(error) })
+  }
+  function clearUsers(){
+    setUsers([])
   }
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home users={users} searchUsers={searchUsers} />} />
-        <Route path="/javascript" element={<h1>javascript</h1>} />
+        <Route path="/" element={<Home users={users} searchUsers={searchUsers} clearUsers={clearUsers} />} />
+        <Route path="/user/:uname" element={<User />} />
       </Routes>
 
 

@@ -1,17 +1,31 @@
 import { useState } from "react";
 
 function Search(props) {
-   const [username, setUsername] = useState("");
-   
+    const [username, setUsername] = useState("");
+    function onChangeHandler(e) {
+        setUsername(e.target.value);
+        //console.log(username);
+    }
+    function onSubmitHandler(e) {
+        e.preventDefault()  //to prevent refreshing the page
+        props.searchUsers(username);
+        setUsername("")
+    }
+    function onClearHandler(e) {
+        e.preventDefault()
+        props.clearUsers()
+    }
     return (
         <>
-            <h1>Github Search</h1>
-            <form>
-                <input type="text" placeholder="Enter Username" />
-                <button>Search</button>
-                <button>Clear</button>
+            <center>
+                <h1>Github Search</h1>
+                <form>
+                    <input type="text" placeholder="Enter Username" onChange={onChangeHandler} value={username}/>
+                    <button onClick={onSubmitHandler}>Search</button>
+                    <button onClick={onClearHandler}>Clear</button>
 
-            </form>
+                </form>
+            </center>
         </>
     )
 }
