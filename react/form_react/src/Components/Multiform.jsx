@@ -17,6 +17,15 @@ function Multiform() {
       ...formData,
       [e.target.name]: e.target.value
     })
+   
+  }
+  function clearText(e){
+    e.preventDefault();
+    setFormData({
+      firstname: "",
+    lastname: "",
+    email: ""
+    })
   }
   return (
     <>
@@ -28,7 +37,7 @@ function Multiform() {
         <br />
         <label>
           Last Name:
-          <input type="text" placeholder="Enter Your Last Name" onChange={changeHandler} name="lastname"value={formData.lastname}/>
+          <input type="text" placeholder="Enter Your Last Name" onChange={changeHandler} name="lastname" value={formData.lastname}/>
         </label>
         <br />
         <label>
@@ -40,6 +49,8 @@ function Multiform() {
       <p>Firstname :{formData.firstname}</p>
       <p>Lastname :{formData.lastname}</p>
       <p>Email :{formData.email}</p>
+<button>Submit</button>
+<button onClick={clearText}>Clear</button>
 
     </>
 
