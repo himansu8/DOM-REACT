@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Alert from "./Alert";
 
 function Search(props) {
     const [username, setUsername] = useState("");
@@ -19,8 +20,9 @@ function Search(props) {
         <>
             <center>
                 <h1>Github Search</h1>
+                <Alert alert={props.alert}/>
                 <form>
-                    <input type="text" placeholder="Enter Username" onChange={onChangeHandler} value={username}/>
+                    <input type="text" placeholder="Enter Username" onChange={onChangeHandler} value={username} />
                     <button onClick={onSubmitHandler}>Search</button>
                     <button onClick={onClearHandler}>Clear</button>
 

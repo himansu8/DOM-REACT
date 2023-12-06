@@ -1,6 +1,7 @@
 import './App.css';
 import Home from './Components/Home';
 import User from './Components/User';
+import Alert from './Components/Alert';
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
@@ -9,9 +10,17 @@ import { Route, Routes } from "react-router-dom";
 
 function App() {
   const [users, setUsers] = useState([]);
+  const [alert, setAlert] = useState(null)
   useEffect(() => {
     fetchUsersData();
   }, [])
+
+  function showAlert(){
+    setAlert(true);
+    setTimeout(()=>{
+      setAlert(null)
+    },1500)
+  }
   function fetchUsersData() {
     const url = "https://api.github.com/users";
     axios.get(url)
@@ -39,7 +48,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home users={users} searchUsers={searchUsers} clearUsers={clearUsers} />} />
+        <Route path="/" element={<Home users={users} searchUsers={searchUsers} clearUsers={clearUsers} showAlert={showAlert} alert={alert}/>}  />
         <Route path="/user/:uname" element={<User />} />
       </Routes>
 
