@@ -39,3 +39,32 @@
 #cross{
  color: red;
 }
+#titleBox{
+  width: 430px;
+  border-style: solid;
+ 
+  background-color: aquamarine;
+}
+#contentBox{
+  width: 430px;
+  border-style: solid;
+  background-color: aquamarine;
+}
+#delete{
+  margin-left: 200px;
+  width: 40px;
+  border-style: solid;
+  border-color: red;
+  background-color: red;
+}
+#titleinput{
+  width: 385px;
+}
+#contentinput{
+  width: 351px;
+}
+#header{
+  width: 432px;
+  background-color: blue;
+  text-align: center;
+}

@@ -29,32 +29,37 @@ function App() {
     const newList = [...notes];
     newList.splice(index, 1)
     setNotes(newList)
-}
+  }
 
   return (
     <>
       {/* <h2>{note.title}</h2>
     <p>{note.content}</p> */}
+      <div id='header'>
+        <h1>NOTE APP</h1>
+      </div>
       <form>
         <label>
-          Title:
-          <input type='text' placeholder='Enter Title' onChange={onChangeHandler} name="title" value={note.title} />
-        </label>
-        <label>
-          Content:
-          <input type='text' placeholder='Enter Content' onChange={onChangeHandler} name="content" value={note.content} />
+          TITLE:
+          <input id='titleinput' type='text' placeholder='Enter Title' onChange={onChangeHandler} name="title" value={note.title} />
         </label>
         <br />
-        <button onClick={onClickHandler}>Add Note</button>
+        <label>
+          CONTENT:
+          <input id='contentinput' type='text' placeholder='Enter Content' onChange={onChangeHandler} name="content" value={note.content} />
+        </label>
+        <br />
 
+        <button onClick={onClickHandler}>ADD NOTE</button>
+        <hr />
 
       </form>
       {notes.map((ele, index) => {
         return (
-          <div id='flex'>
+          <div>
             <Note key={index} title={ele.title} content={ele.content} />
-            <button id='cross' onClick={()=>deleteTasks(index)}>&#10006;</button>
-            <hr/>
+            <button id='delete' onClick={() => deleteTasks(index)}>&#10006;</button>
+            <hr />
           </div>
         )
       })}
