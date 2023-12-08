@@ -36,3 +36,40 @@
     transform: rotate(360deg);
   }
 }
+#heading{
+  background-color: blueviolet;
+  color: yellow;
+  text-align: center;
+}
+.name{
+  background-color: violet;
+  color: rgb(33, 19, 220);
+  text-align: center;
+}
+.btn{
+  
+  text-align: center;
+}
+#img{
+ 
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-right: 150px;
+  margin-left: 430px;
+
+}
+#img1{
+ 
+  margin-top: -150px;
+  margin-bottom: 100px;
+  margin-right: 150px;
+  margin-left: 1000px;
+
+
+}
+#total{
+  background-color:rgb(247, 203, 247);
+ 
+}
+
+

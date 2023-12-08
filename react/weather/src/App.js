@@ -23,17 +23,24 @@ function App() {
         //setWeather(res.data.main)
 
       })
-      .catch((err)=>{console.log(err)})
+      .catch((err) => { console.log(err) })
   }
 
 
 
 
   return (
-    <>
-      <Weather weather={weather} fetchweather={fetchweather} city={city}/>
-      
-    </>
+    <div id="total">
+      <Weather weather={weather} fetchweather={fetchweather} city={city} />
+      <div id="img">
+        <img src='https://openweathermap.org/themes/openweathermap/assets/img/logo_white_cropped.png' />
+      </div>
+      <div id="img1">
+        <img src='https://yt3.googleusercontent.com/ytc/APkrFKaOF8bry3IPW4Faz-DEB7d42kU-HMKjDW6BaFaBkw=s176-c-k-c0x00ffffff-no-rj' />
+      </div>
+    
+
+    </div>
   );
 }
 
