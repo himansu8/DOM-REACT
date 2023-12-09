@@ -56,8 +56,8 @@ function App() {
       </form>
       {notes.map((ele, index) => {
         return (
-          <div>
-            <Note key={index} title={ele.title} content={ele.content} />
+          <div key={index}>
+            <Note  title={ele.title} content={ele.content} />
             <button id='delete' onClick={() => deleteTasks(index)}>&#10006;</button>
             <hr />
           </div>
