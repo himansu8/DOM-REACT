@@ -55,7 +55,8 @@ function App() {
     <>
       <Routes>
         <Route path='/' element={<Home users={users} searchUsers={searchUsers} clearUsers={clearUsers} alert={alert} />} />
-        <Route path='/user' element={<User />} />
+        <Route path='/user/:username' element={<User />} />
+        
 
       </Routes>
     </>
