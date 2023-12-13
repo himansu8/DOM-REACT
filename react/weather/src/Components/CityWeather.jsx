@@ -1,7 +1,7 @@
 
 
 function CityWeather(props) {
-    console.log(props.weather)
+   // console.log(props.weather)
     return (
         <>
             <h1 id="heading">Weather Report</h1>

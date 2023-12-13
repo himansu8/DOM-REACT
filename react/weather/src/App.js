@@ -15,30 +15,41 @@ function App() {
   function fetchweather(cityname) {
     setCity(cityname);
     //console.log(cityname)
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=efdc704b8de053b27f35ed59631c9235`
-    axios.get(url)
-      .then((res) => {
-        //console.log(res.data.main.temp)
-        setWeather(res.data.main.temp)
-        //setWeather(res.data.main)
+    if (cityname.trim().length == 0) {
+      alert("Please Enter Valid City Name")
+      return;
+    }
+    else {
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=efdc704b8de053b27f35ed59631c9235`
+      axios.get(url)
+        .then((res) => {
+          //console.log(res.data.main.temp)
+          setWeather(res.data.main.temp)
+          //setWeather(res.data.main)
 
-      })
-      .catch((err) => { console.log(err) })
+        })
+        .catch((err) => { console.log(err) })
+    }
+
   }
 
+  function clearcity() {
+    setWeather([])
+    setCity('')
 
+  }
 
 
   return (
     <div id="total">
-      <Weather weather={weather} fetchweather={fetchweather} city={city} />
+      <Weather weather={weather} fetchweather={fetchweather} city={city} clearcity={clearcity} />
       <div id="img">
         <img src='https://openweathermap.org/themes/openweathermap/assets/img/logo_white_cropped.png' />
       </div>
       <div id="img1">
         <img src='https://yt3.googleusercontent.com/ytc/APkrFKaOF8bry3IPW4Faz-DEB7d42kU-HMKjDW6BaFaBkw=s176-c-k-c0x00ffffff-no-rj' />
       </div>
-    
+
 
     </div>
   );
