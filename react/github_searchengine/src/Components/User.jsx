@@ -40,11 +40,11 @@ function User() {
   return (
     <div className="flexCont">
       <div className="profile">
-      <img className="profilepic" height={250} width={250} src={profile.avatar_url} />
-      <p>name: {profile.name}</p>
-      <p>login: {username}</p>
-      <p>followers: {profile.followers}</p>
-      <p>following: {profile.following}</p>
+      <img className="profilepic1" height={250} width={250} src={profile.avatar_url} />
+      <p>Name: {profile.name}</p>
+      <p>Login: {username}</p>
+      <p>Followers: {profile.followers}</p>
+      <p>Following: {profile.following}</p>
       </div>
       <div className="repos">
       {repos.map((ele)=>{

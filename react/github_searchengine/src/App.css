@@ -44,11 +44,14 @@
   color: green;
 }
 .profilepic{
+  width:35%;
   border-radius: 50%;
 }
 .flexCont {
   display: flex;
   flex-wrap: nowrap;
+  background-color: beige;
+  
   
 }
 
@@ -60,13 +63,20 @@
   /* font-size: 30px; */
 }
 .profile{
-  width: 30%;
+  width: 35%;
+  background-color: aquamarine;
+  text-align: center;
+  color: red;
 }
 .repos{
   width: 70%;
+  background-color: #d6f2fa;
 }
-.profilepic{
-  width: 40%;
+.profilepic1{
+  width: 65%;
+  /* margin-left: 70px; */
+  margin-top: 10px;
+  border-radius: 70%;
 }
 .bio{
   width: 60%;
