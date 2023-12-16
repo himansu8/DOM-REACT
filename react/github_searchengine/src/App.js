@@ -17,27 +17,33 @@ function App() {
 
 
   function fetchUsers() {
-    
+    setIsLoading(true);
+
     const url = 'https://api.github.com/users'
-    axios.get(url)
-      .then((res) => {
-        //console.log(res.data)
-        setUsers(res.data)
-      })
-      .catch((err) => { console.log(err) })
+
+    setTimeout(() => {
+      axios.get(url)
+        .then((res) => {
+          //console.log(res.data)
+          setUsers(res.data)
+          setIsLoading(false)
+        })
+        .catch((err) => { console.log(err) })
+    }, 3000)
+
   }
 
-  function showAlert(payload){
+  function showAlert(payload) {
     setAlert(payload);
-    setTimeout(()=>{
+    setTimeout(() => {
       setAlert(null)
-    },3000)
+    }, 3000)
   }
 
   function searchUsers(username) {
     if (username.trim().length == 0) {
       //alert("Please Enter Valid User Name")
-      showAlert({type:"error", msg:"Please Enter Valid User Name"});
+      showAlert({ type: "error", msg: "Please Enter Valid User Name" });
       return;
     }
     const url = `https://api.github.com/search/users?q=${username}`
@@ -56,9 +62,9 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path='/' element={<Home users={users} searchUsers={searchUsers} clearUsers={clearUsers} alert={alert} />} />
-        <Route path='/user/:username' element={<User />} />
-        
+        <Route path='/' element={<Home users={users} searchUsers={searchUsers} clearUsers={clearUsers} alert={alert} isLoading={isLoading} />} />
+        <Route path='/user/:username' element={<User />} isLoading={isLoading} setIsLoading={setIsLoading} />
+
 
       </Routes>
     </>

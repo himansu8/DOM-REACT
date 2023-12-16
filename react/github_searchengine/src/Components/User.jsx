@@ -1,8 +1,10 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
+import Loading from "./Loading";
+import Loader from '../assets/Loader.gif'
 import axios from "axios";
-function User() {
+function User(props) {
 
   const { username } = useParams();
   console.log(username)
@@ -17,13 +19,18 @@ function User() {
 
 
   function findUserProfile(user) {
+    //props.setIsLoading(true)
     const url = `https://api.github.com/users/${user}`
-    axios.get(url)
+    //setTimeout(()=>{
+      axios.get(url)
       .then((res) => {
         console.log(res.data)
         setProfile(res.data)
+        props.setIsLoading(false)
       })
       .catch((err) => { console.log(err) })
+    //},3000)
+    
   }
 
   function userRepos(user){
@@ -41,6 +48,7 @@ function User() {
     <div className="flexCont">
       <div className="profile">
       <img className="profilepic1" height={250} width={250} src={profile.avatar_url} />
+      
       <p>Name: {profile.name}</p>
       <p>Login: {username}</p>
       <p>Followers: {profile.followers}</p>

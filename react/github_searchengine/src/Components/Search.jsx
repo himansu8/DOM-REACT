@@ -30,6 +30,7 @@ function Search(props) {
 
     <>
       <center>
+        <h1>Github Search</h1>
         <Alert alert={props.alert} />
         <form>
           <input type="text" placeholder="Enter User Name" onChange={onChangeHandler} value={username} /><br />
