@@ -8,6 +8,7 @@ import axios from 'axios';
 function App() {
   const [users, setUsers] = useState([])
   const [alert, setAlert] = useState(null);
+  const [isLoading, setIsLoading] = useState(false)
 
 
   useEffect(() => {
@@ -16,6 +17,7 @@ function App() {
 
 
   function fetchUsers() {
+    
     const url = 'https://api.github.com/users'
     axios.get(url)
       .then((res) => {
